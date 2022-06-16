@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+
+  fastlane:
+    container_name: fastlane
+    hostname: fastlane
+    image: docker.iatric.com/fastlane:${VERSION}-alpine
+    restart: always
+    ports:
+      - 44300:443
+    environment:
+      APPLICATION_API: https://fastlane/api
+      APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:44300/api
+      APPLICATION_NAME: Fastlane
+      APPLICATION_URL: https://${SERVER_HOSTNAME}:44300/
+      APPLICATION_UUID: ef38f527-7e47-4680-a978-cd4c51789a52
+      APPLICATIONMANAGER_API: https://fastlane/api
+      APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:44300/api
+      DB_DIALECT: mysql
+      DB_HOSTNAME: ${DB_HOSTNAME}
+      DB_LOGGING: 0
+      DB_NAME: fastlane
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      ICONNECT_SITECODE: ${ICONNECT_SITECODE}
+      NODE_ENV: production
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
+      PORT: 443
+      X_AUTH_REFRESH_TOKEN_EXPIRATION: 480
+      X_AUTH_REFRESH_TOKEN_SECRET: ${X_AUTH_TOKEN_SECRET}
+      X_AUTH_TOKEN_EXPIRATION: 15
+      X_AUTH_TOKEN_SECRET: ${X_AUTH_TOKEN_SECRET}
