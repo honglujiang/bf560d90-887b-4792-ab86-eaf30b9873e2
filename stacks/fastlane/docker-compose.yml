@@ -5,6 +5,7 @@ services:
   fastlane:
     container_name: fastlane
     hostname: fastlane
+    network: iatric
     image: docker.iatric.com/fastlane:${VERSION}-alpine
     restart: always
     ports:
