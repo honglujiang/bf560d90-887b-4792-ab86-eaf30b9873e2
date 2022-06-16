@@ -10,6 +10,9 @@ services:
     restart: always
     ports:
       - 44300:443
+    volumes:
+      - /home/iatric/certificates:/app/certificates
+      - /home/iatric/apps/fastlane/uploads:/app/uploads
     environment:
       APPLICATION_API: https://fastlane/api
       APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:44300/api
