@@ -5,7 +5,8 @@ services:
   fastlane:
     container_name: fastlane
     hostname: fastlane
-    network: iatric
+    networks:
+      - iatric
     image: docker.iatric.com/fastlane:${VERSION}-alpine
     restart: always
     ports:
@@ -36,3 +37,7 @@ services:
       X_AUTH_REFRESH_TOKEN_SECRET: ${X_AUTH_TOKEN_SECRET}
       X_AUTH_TOKEN_EXPIRATION: 15
       X_AUTH_TOKEN_SECRET: ${X_AUTH_TOKEN_SECRET}
+
+networks:
+  iatric:
+    external: true
