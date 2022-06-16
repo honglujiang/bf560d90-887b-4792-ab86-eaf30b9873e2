@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+  fastlane_prod:
+    container_name: fastlane_prod
+    hostname: fastlane_prod
+    networks:
+      - iatric
+    image: docker.iatric.com/fastlane:${VERSION}-alpine
+    restart: always
+    ports:
+      - 44300:443
+    volumes:
+      - /home/iatric/certificates:/app/certificates
+      - /home/iatric/apps/fastlane_prod/uploads:/app/uploads
+    environment:
+      APPLICATION_API: https://fastlane_prod/api
+      APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:44300/api
+      APPLICATION_NAME: Fastlane [PROD]
+      APPLICATION_URL: https://${SERVER_HOSTNAME}:44300/
+      APPLICATION_UUID: ef38f527-7e47-4680-a978-cd4c51789a52
+      APPLICATIONMANAGER_API: https://fastlane_prod/api
+      APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:44300/api
+      DB_DIALECT: mysql
+      DB_HOSTNAME: ${DB_HOSTNAME}
+      DB_LOGGING: 0
+      DB_NAME: fastlane_prod
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      ICONNECT_SITECODE: ${ICONNECT_SITECODE}
+      NODE_ENV: production
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
+      PORT: 443
+      X_AUTH_REFRESH_TOKEN_EXPIRATION: 480
+      X_AUTH_REFRESH_TOKEN_SECRET: ${X_AUTH_TOKEN_SECRET}
+      X_AUTH_TOKEN_EXPIRATION: 15
+      X_AUTH_TOKEN_SECRET: ${X_AUTH_TOKEN_SECRET}
+
+networks:
+  iatric:
+    external: true
