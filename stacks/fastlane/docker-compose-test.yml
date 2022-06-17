@@ -10,18 +10,18 @@ services:
     image: docker.iatric.com/fastlane:${VERSION}-alpine
     restart: unless-stopped
     ports:
-      - 44300:443
+      - 43200:443
     volumes:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_test/uploads:/app/uploads
     environment:
       APPLICATION_API: https://fastlane_test/api
-      APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:44300/api
+      APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:43200/api
       APPLICATION_NAME: Fastlane [TEST]
-      APPLICATION_URL: https://${SERVER_HOSTNAME}:44300/
+      APPLICATION_URL: https://${SERVER_HOSTNAME}:43200/
       APPLICATION_UUID: ef38f527-7e47-4680-a978-cd4c51789a52
       APPLICATIONMANAGER_API: https://fastlane_test/api
-      APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:44300/api
+      APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:43200/api
       DB_DIALECT: mysql
       DB_HOSTNAME: ${DB_HOSTNAME}
       DB_LOGGING: 0
