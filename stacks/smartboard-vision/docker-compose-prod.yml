@@ -11,6 +11,8 @@ services:
       - sbv_prod_mongodb:/data/db
     networks:
       - iatric
+    ports:
+      - 27017/tcp
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
