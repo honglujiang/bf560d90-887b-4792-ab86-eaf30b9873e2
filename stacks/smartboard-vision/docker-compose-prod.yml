@@ -24,7 +24,7 @@ services:
       APPLICATION_UUID: 589e3ffe-42ef-4717-81f2-22c5c4533429
       APPLICATIONMANAGER_API: https://fastlane_prod/api
       APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:43400/api
-      DB: mongodb://mongo/sbv_prod
+      DB: mongodb://mongodb/sbv_prod
       ICONNECT_SITECODE: ${ICONNECT_SITECODE}
       MONGO_USER: ${MONGO_USER}
       MONGO_USER_PASSWORD: ${MONGO_USER_PASSWORD}
