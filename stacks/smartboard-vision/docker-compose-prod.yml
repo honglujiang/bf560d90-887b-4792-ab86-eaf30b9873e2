@@ -11,6 +11,10 @@ services:
       - sbv_prod_mongodb:/data/db
     networks:
       - iatric
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: sbv_prod_mongodb
 
   sbv_prod:
     container_name: sbv_prod
@@ -38,8 +42,8 @@ services:
       APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:43400/api
       DB: mongodb://sbv_prod_mongodb/sbv_prod
       ICONNECT_SITECODE: ${ICONNECT_SITECODE}
-      MONGO_USER: ${MONGO_USER}
-      MONGO_USER_PASSWORD: ${MONGO_USER_PASSWORD}
+      MONGO_USER: root
+      MONGO_USER_PASSWORD: example
       NODE_ENV: production
       NODE_TLS_REJECT_UNAUTHORIZED: 0
       PORT: 443
