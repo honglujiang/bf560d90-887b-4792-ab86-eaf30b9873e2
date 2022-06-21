@@ -2,6 +2,23 @@ version: '3'
 
 services:
 
+  fastlane_test_db:
+    container_name: fastlane_test_db
+    hostname: fastlane_test_db
+    image: mysql/mysql-server:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_USER: 'fastlane'
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD} 
+      MYSQL_DATABASE: 'fastlane_test'
+    ports:
+      - 3306
+    networks:
+      - iatric
+    volumes:
+      - /home/iatric/databases/mysql/fastlane_test:/var/lib/mysql
+
   fastlane_test:
     container_name: fastlane_test
     hostname: fastlane_test
@@ -10,7 +27,7 @@ services:
     image: docker.iatric.com/fastlane:${VERSION}-alpine
     restart: unless-stopped
     ports:
-      - 43200:443
+      - 43200:443/tcp
     volumes:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_test/uploads:/app/uploads
@@ -23,12 +40,12 @@ services:
       APPLICATIONMANAGER_API: https://fastlane_test/api
       APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:43200/api
       DB_DIALECT: mysql
-      DB_HOSTNAME: ${DB_HOSTNAME}
+      DB_HOSTNAME: fastlane_test_db
       DB_LOGGING: 0
       DB_NAME: fastlane_test
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_PORT: ${DB_PORT}
-      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      DB_PORT: 3306
+      DB_USERNAME: fastlane
       ICONNECT_SITECODE: ${ICONNECT_SITECODE}
       NODE_ENV: production
       NODE_TLS_REJECT_UNAUTHORIZED: 0
