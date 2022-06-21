@@ -1,6 +1,8 @@
 version: "3"
 services:
-  app:
+  nginx_proxy_manager:
+    container_name: nginx_proxy_manager
+    hostname: nginx_proxy_manager
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
@@ -13,3 +15,6 @@ services:
       - /home/iatric/nginx/data:/data
       - /home/iatric/letsencrypt:/etc/letsencrypt
   
+networks:
+  iatric:
+    external: true  
