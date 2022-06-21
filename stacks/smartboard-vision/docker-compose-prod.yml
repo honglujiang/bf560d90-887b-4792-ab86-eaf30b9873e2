@@ -2,6 +2,16 @@ version: '3'
 
 services:
 
+  sbv_prod_mongodb:
+    container_name: sbv_prod_mongodb
+    hostname: sbv_prod_mongodb
+    image: mongo
+    restart: always
+    volumes:
+      - sbv_prod_mongodb:/data/db
+    networks:
+      - iatric
+
   sbv_prod:
     container_name: sbv_prod
     hostname: sbv_prod
@@ -9,6 +19,8 @@ services:
       - iatric
     image: docker.iatric.com/sbv:${VERSION}-alpine
     restart: unless-stopped
+    depends_on:
+      - sbv_prod_mongodb
     ports:
       - 43401:443
     volumes:
@@ -24,7 +36,7 @@ services:
       APPLICATION_UUID: 589e3ffe-42ef-4717-81f2-22c5c4533429
       APPLICATIONMANAGER_API: https://fastlane_prod/api
       APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:43400/api
-      DB: mongodb://${DB_HOSTNAME}/sbv_prod
+      DB: mongodb://sbv_prod_mongodb/sbv_prod
       ICONNECT_SITECODE: ${ICONNECT_SITECODE}
       MONGO_USER: ${MONGO_USER}
       MONGO_USER_PASSWORD: ${MONGO_USER_PASSWORD}
@@ -35,6 +47,9 @@ services:
       X_AUTH_REFRESH_TOKEN_SECRET: ${X_AUTH_TOKEN_SECRET}
       X_AUTH_TOKEN_EXPIRATION: 15
       X_AUTH_TOKEN_SECRET: ${X_AUTH_TOKEN_SECRET}
+
+volumes:
+  sbv_prod_mongodb: {}
 
 networks:
   iatric:
