@@ -5,6 +5,8 @@ services:
     hostname: nginx_proxy_manager
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
+    networks:
+      - iatric
     ports:
       - '80:80'
       - '443:443'
