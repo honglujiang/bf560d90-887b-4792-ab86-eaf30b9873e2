@@ -7,6 +7,7 @@ services:
     hostname: fastlane_test_db
     image: mysql/mysql-server:8.0
     restart: always
+    command: --default-authentication-plugin=mysql_native_password --lower-case-table-names=1 --innodb-buffer-pool-size=1073741824 --innodb-log-file-size=268435456 --innodb-flush-log-at-trx-commit=0 --innodb-flush-method=O_DIRECT
     environment:
       MYSQL_ROOT_HOST: '%'
       MYSQL_USER: 'fastlane'
@@ -45,7 +46,7 @@ services:
       DB_NAME: fastlane_test
       DB_PASSWORD: ${MYSQL_PASSWORD}
       DB_PORT: 3306
-      DB_USERNAME: fastlane
+      DB_USERNAME: ${MYSQL_USER}
       ICONNECT_SITECODE: ${ICONNECT_SITECODE}
       NODE_ENV: production
       NODE_TLS_REJECT_UNAUTHORIZED: 0
