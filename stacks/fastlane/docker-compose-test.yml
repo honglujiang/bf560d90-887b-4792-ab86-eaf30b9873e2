@@ -27,6 +27,8 @@ services:
       - iatric
     image: docker.iatric.com/fastlane:${VERSION}-alpine
     restart: unless-stopped
+    depends_on:
+      - fastlane_test_db
     ports:
       - 43200:443/tcp
     volumes:
