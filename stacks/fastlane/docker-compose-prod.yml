@@ -36,10 +36,10 @@ services:
       APPLICATION_API: https://fastlane_prod/api
       APPLICATION_API_CLIENT: https://$(cat /etc/hostname):43400/api
       APPLICATION_NAME: Fastlane [PROD]
-      APPLICATION_URL: https://$$(cat /etc/hostname):43400/
+      APPLICATION_URL: https://$(cat /etc/hostname):43400/
       APPLICATION_UUID: ef38f527-7e47-4680-a978-cd4c51789a52
       APPLICATIONMANAGER_API: https://fastlane_prod/api
-      APPLICATIONMANAGER_API_CLIENT: https://$$(cat /etc/hostname):43400/api
+      APPLICATIONMANAGER_API_CLIENT: https://$(cat /etc/hostname):43400/api
       DB_DIALECT: mysql
       DB_HOSTNAME: fastlane_prod_db
       DB_LOGGING: 0
