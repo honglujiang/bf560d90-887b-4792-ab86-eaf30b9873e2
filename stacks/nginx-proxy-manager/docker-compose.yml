@@ -14,9 +14,13 @@ services:
     environment:
       DISABLE_IPV6: 'true'
     volumes:
-      - /home/iatric/nginx/data:/data
-      - /home/iatric/letsencrypt:/etc/letsencrypt
+      - nginx_proxy_manager_data:/data
+      - nginx_proxy_manager_letsencrypt:/etc/letsencrypt
   
+volumes:
+  nginx_proxy_manager_data: {}
+  nginx_proxy_manager_letsencrypt: {}
+
 networks:
   iatric:
     external: true  
