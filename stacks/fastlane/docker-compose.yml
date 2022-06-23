@@ -1,12 +1,14 @@
-version: '3.4'
+version: '3.7'
+
+x-port-test: &port-test 43200
+x-port-prod: &port-prod 43400
+x-port-mapping-test: &port-mapping-test 
+  - 43200:443/tcp
+x-port-mapping-prod: &port-mapping-prod 
+  - 43400:443/tcp
 
 services:
 
-  x-port-test: &port-test 43200
-  x-port-prod: &port-prod 43400
-  x-port-mapping-test: &port-mapping-test 43200:443/tcp
-  x-port-mapping-prod: &port-mapping-prod 43400:443/tcp
-  
   fastlane_db:
     container_name: fastlane_${ENVIRONMENT}_db
     hostname: fastlane_${ENVIRONMENT}_db
@@ -36,7 +38,7 @@ services:
     depends_on:
       - fastlane_${ENVIRONMENT}_db
     ports:
-      *port-mapping-test
+      '*port-mapping-${ENVIRONMENT}'
     volumes:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_${ENVIRONMENT}/uploads:/app/uploads
