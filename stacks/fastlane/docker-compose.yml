@@ -38,7 +38,7 @@ services:
     depends_on:
       - fastlane_${ENVIRONMENT}_db
     ports:
-      '*port-mapping-${ENVIRONMENT}'
+      *port-mapping-test
     volumes:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_${ENVIRONMENT}/uploads:/app/uploads
