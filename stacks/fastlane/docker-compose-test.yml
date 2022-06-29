@@ -36,7 +36,7 @@ services:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_test/uploads:/app/uploads
     env_file:
-      - - ./home/iatric/global.env
+      - /home/iatric/global.env
     environment:
       APPLICATION_API: https://fastlane_test/api
       APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:43200/api
