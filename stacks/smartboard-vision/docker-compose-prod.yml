@@ -34,6 +34,8 @@ services:
       - /home/iatric/apps/sbv_prod/watch:/app/watch
       - /home/iatric/apps/sbv_prod/error:/app/error
       - /home/iatric/apps/sbv_prod/staticFiles:/app/staticFiles
+    env_file:
+      - ./home/iatric/global.env
     environment:
       APPLICATION_API: https://sbv_prod/api
       APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:43401/api

@@ -35,6 +35,8 @@ services:
     volumes:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_prod/uploads:/app/uploads
+    env_file:
+      - ./home/iatric/global.env
     environment:
       APPLICATION_API: https://fastlane_prod/api
       APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:43400/api
