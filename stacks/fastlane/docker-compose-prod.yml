@@ -11,7 +11,7 @@ services:
     environment:
       MYSQL_ROOT_HOST: '%'
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
-      MYSQL_USER: 'fastlane'
+      MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD} 
       MYSQL_DATABASE: 'fastlane_prod'
     ports:
