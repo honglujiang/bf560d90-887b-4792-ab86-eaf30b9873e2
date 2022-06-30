@@ -35,6 +35,8 @@ services:
     volumes:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_prod/uploads:/app/uploads
+    env_file:
+      - /home/iatric/global.env
     environment:
       - SITE_CODE=${SITE_CODE:-wobby}
       - SERVER_HOSTNAME=192.168.10.70
