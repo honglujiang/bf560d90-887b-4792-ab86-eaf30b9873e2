@@ -35,6 +35,8 @@ services:
     volumes:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_prod/uploads:/app/uploads
+    env_file:
+      - stack.env
     environment:
       - SITE_CODE
       - SERVER_HOSTNAME=192.168.10.70
