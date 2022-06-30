@@ -26,7 +26,7 @@ services:
     networks:
       - iatric
     volumes:
-      - fastlane_${ENVIRONMENT}_db:/var/lib/mysql
+      - fastlane_prod_db:/var/lib/mysql
 
   fastlane:
     container_name: fastlane_${ENVIRONMENT}
@@ -67,7 +67,7 @@ services:
       X_AUTH_TOKEN_SECRET: test
 
 volumes:
-  fastlane_PROD_db: {}
+  fastlane_prod_db: {}
 
 networks:
   iatric:
