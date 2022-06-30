@@ -7,7 +7,7 @@ x-port-mapping-test: &port-mapping-test
 x-port-mapping-prod: &port-mapping-prod 
   - 43400:443/tcp
 x-derp: &derp 
-  - *port-mapping-test
+  - '*port-mapping-test'
 
 services:
 
