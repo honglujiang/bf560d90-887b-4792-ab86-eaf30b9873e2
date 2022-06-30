@@ -9,11 +9,11 @@ services:
     restart: always
     command: --default-authentication-plugin=mysql_native_password --lower-case-table-names=1 --innodb-buffer-pool-size=1073741824 --innodb-log-file-size=268435456 --innodb-flush-log-at-trx-commit=0 --innodb-flush-method=O_DIRECT
     environment:
-      MYSQL_ROOT_HOST: '%'
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD} 
-      MYSQL_DATABASE: 'fastlane_prod'
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD} 
+      - MYSQL_DATABASE=fastlane_prod
     ports:
       - 3306
     networks:
@@ -36,30 +36,30 @@ services:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_prod/uploads:/app/uploads
     environment:
-      SITE_CODE:
-      SERVER_HOSTNAME:
-      X_AUTH_TOKEN_SECRET:
-      X_AUTH_REFRESH_TOKEN_SECRET:
-      APPLICATION_API: https://fastlane_prod/api
-      APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:43400/api
-      APPLICATION_NAME: Fastlane [PROD]
-      APPLICATION_URL: https://${SERVER_HOSTNAME}:43400/
-      APPLICATION_UUID: ef38f527-7e47-4680-a978-cd4c51789a52
-      APPLICATIONMANAGER_API: https://fastlane_prod/api
-      APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:43400/api
-      DB_DIALECT: mysql
-      DB_HOSTNAME: fastlane_prod_db
-      DB_LOGGING: 0
-      DB_NAME: fastlane_prod
-      DB_PASSWORD: ${MYSQL_PASSWORD}
-      DB_PORT: 3306
-      DB_USERNAME: ${MYSQL_USER}
-      ICONNECT_SITECODE: ${ICONNECT_SITECODE}
-      NODE_ENV: production
-      NODE_TLS_REJECT_UNAUTHORIZED: 0
-      PORT: 443
-      X_AUTH_REFRESH_TOKEN_EXPIRATION: 480
-      X_AUTH_TOKEN_EXPIRATION: 15
+      - SITE_CODE
+      - SERVER_HOSTNAME
+      - X_AUTH_TOKEN_SECRET
+      - X_AUTH_REFRESH_TOKEN_SECRET
+      - APPLICATION_API=https://fastlane_prod/api
+      - APPLICATION_API_CLIENT=https://${SERVER_HOSTNAME}:43400/api
+      - APPLICATION_NAME=Fastlane [PROD]
+      - APPLICATION_URL=https://${SERVER_HOSTNAME}:43400/
+      - APPLICATION_UUID=ef38f527-7e47-4680-a978-cd4c51789a52
+      - APPLICATIONMANAGER_API=https://fastlane_prod/api
+      - APPLICATIONMANAGER_API_CLIENT=https://${SERVER_HOSTNAME}:43400/api
+      - DB_DIALECT=mysql
+      - DB_HOSTNAME=fastlane_prod_db
+      - DB_LOGGING=0
+      - DB_NAME=fastlane_prod
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_PORT=3306
+      - DB_USERNAME=${MYSQL_USER}
+      - ICONNECT_SITECODE=${ICONNECT_SITECODE}
+      - NODE_ENV=production
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - PORT=443
+      - X_AUTH_REFRESH_TOKEN_EXPIRATION=480
+      - X_AUTH_TOKEN_EXPIRATION=15
 
 volumes:
   fastlane_prod_db: {}
