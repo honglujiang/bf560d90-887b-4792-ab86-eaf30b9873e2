@@ -6,6 +6,7 @@ x-port-mapping-test: &port-mapping-test
   - 43200:443/tcp
 x-port-mapping-prod: &port-mapping-prod 
   - 43400:443/tcp
+x-derp: &derp '*port-mapping-test'
 
 services:
 
@@ -38,7 +39,7 @@ services:
     depends_on:
       - fastlane_${ENVIRONMENT}_db
     ports:
-      *port-mapping-test
+      *derp
     volumes:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_${ENVIRONMENT}/uploads:/app/uploads
