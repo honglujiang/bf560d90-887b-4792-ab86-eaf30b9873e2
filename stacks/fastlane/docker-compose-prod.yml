@@ -36,17 +36,16 @@ services:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_prod/uploads:/app/uploads
     environment:
-      - SITE_CODE=$SITE_CODE:-site
       - SERVER_HOSTNAME=192.168.10.70
-      - X_AUTH_TOKEN_SECRET=jwtSecret
-      - X_AUTH_REFRESH_TOKEN_SECRET=jwtSecret
+      - X_AUTH_TOKEN_SECRET=test
+      - X_AUTH_REFRESH_TOKEN_SECRET=test
       - APPLICATION_API=https://fastlane_prod/api
-      - APPLICATION_API_CLIENT=https://${SERVER_HOSTNAME}:43400/api
+      - APPLICATION_API_CLIENT=https://192.168.10.70:43400/api
       - APPLICATION_NAME=Fastlane [PROD]
-      - APPLICATION_URL=https://${SERVER_HOSTNAME}:43400/
+      - APPLICATION_URL=https://192.168.10.70:43400/
       - APPLICATION_UUID=ef38f527-7e47-4680-a978-cd4c51789a52
       - APPLICATIONMANAGER_API=https://fastlane_prod/api
-      - APPLICATIONMANAGER_API_CLIENT=https://${SERVER_HOSTNAME}:43400/api
+      - APPLICATIONMANAGER_API_CLIENT=https://192.168.10.70:43400/api
       - DB_DIALECT=mysql
       - DB_HOSTNAME=fastlane_prod_db
       - DB_LOGGING=0
@@ -54,7 +53,7 @@ services:
       - DB_PASSWORD=${MYSQL_PASSWORD}
       - DB_PORT=3306
       - DB_USERNAME=${MYSQL_USER}
-      - ICONNECT_SITECODE=${ICONNECT_SITECODE}
+      - ICONNECT_SITECODE=IAT
       - NODE_ENV=production
       - NODE_TLS_REJECT_UNAUTHORIZED=0
       - PORT=443
