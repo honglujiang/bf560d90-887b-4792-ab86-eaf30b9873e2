@@ -27,7 +27,7 @@ services:
     networks:
       - iatric
     image: docker.iatric.com/fastlane:${VERSION}-alpine
-    restart: never
+    restart: always
     depends_on:
       - fastlane_prod_db
     ports:
