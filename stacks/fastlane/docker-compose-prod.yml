@@ -36,7 +36,7 @@ services:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_prod/uploads:/app/uploads
     environment:
-      - SITE_CODE=$SITE_CODE
+      - SITE_CODE=${SITE_CODE:-wobby}
       - SERVER_HOSTNAME=192.168.10.70
       - X_AUTH_TOKEN_SECRET=test
       - X_AUTH_REFRESH_TOKEN_SECRET=test
