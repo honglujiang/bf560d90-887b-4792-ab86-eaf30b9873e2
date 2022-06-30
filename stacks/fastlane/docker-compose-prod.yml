@@ -36,10 +36,10 @@ services:
       - /home/iatric/certificates:/app/certificates
       - /home/iatric/apps/fastlane_prod/uploads:/app/uploads
     environment:
-      - SITE_CODE=${SITE_CODE:-site}
-      - SERVER_HOSTNAME=${SERVER_HOSTNAME:-host}
-      - X_AUTH_TOKEN_SECRET=${X_AUTH_TOKEN_SECRET:-tokensecret}
-      - X_AUTH_REFRESH_TOKEN_SECRET=${X_AUTH_REFRESH_TOKEN_SECRET:-refreshTokenSecret}
+      - SITE_CODE=$SITE_CODE:-site
+      - SERVER_HOSTNAME=192.168.10.70
+      - X_AUTH_TOKEN_SECRET=jwtSecret
+      - X_AUTH_REFRESH_TOKEN_SECRET=jwtSecret
       - APPLICATION_API=https://fastlane_prod/api
       - APPLICATION_API_CLIENT=https://${SERVER_HOSTNAME}:43400/api
       - APPLICATION_NAME=Fastlane [PROD]
