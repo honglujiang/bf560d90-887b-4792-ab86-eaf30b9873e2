@@ -36,7 +36,7 @@ services:
     image: docker.iatric.com/fastlane:${VERSION}-alpine
     restart: unless-stopped
     depends_on:
-      - fastlane_${ENVIRONMENT}_db
+      - fastlane_db
     ports:
       *derp
     volumes:
