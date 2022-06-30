@@ -2,12 +2,10 @@ version: '3.7'
 
 x-port-test: &port-test 43200
 x-port-prod: &port-prod 43400
-x-port-mapping-test: &port-mapping-test 
-  - 43200:443/tcp
-x-port-mapping-prod: &port-mapping-prod 
-  - 43400:443/tcp
+x-port-mapping-test: &port-mapping-test 43200:443/tcp
+x-port-mapping-prod: &port-mapping-prod 43400:443/tcp
 x-derp: &derp 
-  - '*port-mapping-test'
+  - *port-mapping-test
 
 services:
 
