@@ -5,16 +5,6 @@ x-fastlane-db: &fastlane-db fastlane_{$ENVIRONMENT}_db
 x-mysql-user: &mysql-user ${MYSQL_USER}
 x-mysql-pass: &mysql-pass ${MYSQL_PASSWORD}
 
-# ENVIRONMENT
-# VERSION
-
-# SITE_CODE
-# SERVER_HOSTNAME
-# TOKEN_SECRET
-
-# MYSQL_USER
-# MYSQL_PASS
-
 services:
 
   db:
