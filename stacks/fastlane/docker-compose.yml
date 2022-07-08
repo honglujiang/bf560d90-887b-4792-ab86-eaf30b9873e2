@@ -61,7 +61,7 @@ services:
 
 volumes:
   db_volume:
-    name: fastlane_{$ENVIRONMENT}_db
+    name: fastlane_${ENVIRONMENT}_db
 
 networks:
   iatric:
