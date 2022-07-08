@@ -15,7 +15,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: fastlane_${ENVIRONMENT}
     ports:
-      - 3306
+      - 3306/tcp
     networks:
       - iatric
     volumes:
