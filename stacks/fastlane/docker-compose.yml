@@ -1,7 +1,5 @@
 version: '3.7'
 
-x-fastlane-db-volume: &fastlane-db-volume fastlane_{$ENVIRONMENT}_db
-
 services:
 
   db:
@@ -62,7 +60,7 @@ services:
       X_AUTH_TOKEN_SECRET: ${TOKEN_SECRET}
 
 volumes:
-  *fastlane_db_volume
+  fastlane_{$ENVIRONMENT}_db
 
 networks:
   iatric:
