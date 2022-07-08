@@ -24,7 +24,7 @@ services:
     networks:
       - iatric
     volumes:
-      - fastlane_prod_db:/var/lib/mysql
+      - fastlane-${ENVIRONMENT}-db:/var/lib/mysql
 
   app:
     container_name: *fastlane-app
