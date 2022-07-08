@@ -65,7 +65,7 @@ services:
       X_AUTH_TOKEN_SECRET: ${TOKEN_SECRET}
 
 volumes:
-  fastlane_db_prod: {}
+  fastlane_prod_db: {}
 
 networks:
   iatric:
