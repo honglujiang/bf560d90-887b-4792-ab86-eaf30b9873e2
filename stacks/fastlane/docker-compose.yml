@@ -1,25 +1,19 @@
 version: '3.7'
 
-x-fastlane-app-container: &fastlane-app-container fastlane_${ENVIRONMENT}_app
-x-fastlane-db-container: &fastlane-db-container fastlane_${ENVIRONMENT}_db
-x-fastlane-db-name: &fastlane-db-name fastlane_${ENVIRONMENT}
-x-mysql-user: &mysql-user ${MYSQL_USER}
-x-mysql-pass: &mysql-pass ${MYSQL_PASSWORD}
-
 services:
 
   db:
-    container_name: *fastlane-db-container
-    hostname: *fastlane-db-container
+    container_name: fastlane_${ENVIRONMENT}_db
+    hostname: fastlane_${ENVIRONMENT}_db
     image: mysql/mysql-server:8.0
     restart: always
     command: --default-authentication-plugin=mysql_native_password --lower-case-table-names=1 --innodb-buffer-pool-size=1073741824 --innodb-log-file-size=268435456 --innodb-flush-log-at-trx-commit=0 --innodb-flush-method=O_DIRECT
     environment:
       MYSQL_ROOT_HOST: '%'
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
-      MYSQL_USER: *mysql-user
-      MYSQL_PASSWORD: *mysql-pass
-      MYSQL_DATABASE: *fastlane-db-name
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: fastlane_${ENVIRONMENT}
     ports:
       - 3306
     networks:
@@ -28,8 +22,8 @@ services:
       - fastlane_prod_db:/var/lib/mysql
 
   app:
-    container_name: *fastlane-app-container
-    hostname: *fastlane-app-container
+    container_name: fastlane_${ENVIRONMENT}
+    hostname: fastlane_${ENVIRONMENT}
     networks:
       - iatric
     image: docker.iatric.com/fastlane:${VERSION}-alpine
@@ -50,12 +44,12 @@ services:
       APPLICATIONMANAGER_API: https://fastlane_${ENVIRONMENT}/api
       APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:${PORT}/api
       DB_DIALECT: mysql
-      DB_HOSTNAME: *fastlane-db-container
+      DB_HOSTNAME: fastlane_${ENVIRONMENT}_db
       DB_LOGGING: 0
-      DB_NAME: *fastlane-db-name
-      DB_PASSWORD: *mysql-pass
+      DB_NAME: fastlane_${ENVIRONMENT}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
       DB_PORT: 3306
-      DB_USERNAME: *mysql-user
+      DB_USERNAME: ${MYSQL_USER}
       ICONNECT_SITECODE: ${SITE_CODE}
       NODE_ENV: production
       NODE_TLS_REJECT_UNAUTHORIZED: 0
