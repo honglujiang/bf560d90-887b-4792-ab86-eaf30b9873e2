@@ -1,7 +1,7 @@
 version: '3.7'
 
-x-fastlane-app: &fastlane-app fastlane_$ENVIRONMENT_app
-x-fastlane-db: &fastlane-db fastlane_$ENVIRONMENT_db
+x-fastlane-app: &fastlane-app fastlane_${ENVIRONMENT}_app
+x-fastlane-db: &fastlane-db fastlane_${ENVIRONMENT}_db
 x-mysql-user: &mysql-user ${MYSQL_USER}
 x-mysql-pass: &mysql-pass ${MYSQL_PASSWORD}
 
