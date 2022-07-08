@@ -17,8 +17,6 @@ services:
      ports:
        - 80
      restart: always
-     env_file:
-      - /home/iatric/global.env
      environment:
        SITE_CODE: ${ICONNECT_SITECODE}
        ICONNECT_SITECODE:
