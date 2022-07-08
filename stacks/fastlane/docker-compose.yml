@@ -1,5 +1,7 @@
 version: '3.7'
 
+x-fastlane-db-volume: &fastlane-db-volume fastlane_{$ENVIRONMENT}_db
+
 services:
 
   db:
@@ -19,7 +21,7 @@ services:
     networks:
       - iatric
     volumes:
-      - fastlane_prod_db:/var/lib/mysql
+      - fastlane_${ENVIRONMENT}_db:/var/lib/mysql
 
   app:
     container_name: fastlane_${ENVIRONMENT}
@@ -60,7 +62,7 @@ services:
       X_AUTH_TOKEN_SECRET: ${TOKEN_SECRET}
 
 volumes:
-  fastlane_prod_db: {}
+  *fastlane_db_volume
 
 networks:
   iatric:
