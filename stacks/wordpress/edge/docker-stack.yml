@@ -18,6 +18,8 @@ services:
        - 80
      restart: always
      environment:
+       SITE_CODE: ${SITE_CODE}
+       ICONNECT_SITECODE:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: wordpress
