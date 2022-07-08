@@ -17,8 +17,11 @@ services:
      ports:
        - 80
      restart: always
+     env_file:
+      - /home/iatric/global.env
      environment:
-       SITE_CODE: ${SITE_CODE}
+       SITE_CODE: ${ICONNECT_SITECODE}
+       ICONNECT_SITECODE:
        WORDPRESS_DB_HOST: db:3306
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: wordpress
