@@ -37,12 +37,12 @@ services:
       - /home/iatric/apps/fastlane_${ENVIRONMENT}/uploads:/app/uploads
     environment:
       APPLICATION_API: https://fastlane_${ENVIRONMENT}/api
-      APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:${PORT}/api
+      APPLICATION_API_CLIENT: https://${SERVER_HOSTNAME}:${FASTLANE_PORT}/api
       APPLICATION_NAME: Fastlane [${ENVIRONMENT}]
-      APPLICATION_URL: https://${SERVER_HOSTNAME}:${PORT}/
+      APPLICATION_URL: https://${SERVER_HOSTNAME}:${FASTLANE_PORT}/
       APPLICATION_UUID: ef38f527-7e47-4680-a978-cd4c51789a52
       APPLICATIONMANAGER_API: https://fastlane_${ENVIRONMENT}/api
-      APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:${PORT}/api
+      APPLICATIONMANAGER_API_CLIENT: https://${SERVER_HOSTNAME}:${FASTLANE_PORT}/api
       DB_DIALECT: mysql
       DB_HOSTNAME: fastlane_${ENVIRONMENT}_db
       DB_LOGGING: 0
