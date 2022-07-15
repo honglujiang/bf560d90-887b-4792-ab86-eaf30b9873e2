@@ -250,7 +250,7 @@ services:
     volumes:
       - "/home/fastlane/certificates:/app/certificates"
   fastlane:
-    image: "docker.iatric.com/fastlane:v2.1.0-alpine"
+    image: "docker.iatric.com/fastlane:v2.1.1-alpine"
     ports:
       - "44400:44400"
     depends_on:
