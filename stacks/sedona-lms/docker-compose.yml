@@ -15,7 +15,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: lms_${ENVIRONMENT}
     ports:
-      - 3306/tcp
+      - ${DB_PORT}:3306/tcp
     networks:
       - iatric
     volumes:
